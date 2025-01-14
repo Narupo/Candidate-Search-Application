@@ -33,6 +33,18 @@ useEffect(() => {
   }, [query]
 );
 
+const saveCandidate = (candidate: Candidate) => {
+  try {
+    const savedCandidates = JSON.parse(localStorage.getItem('saveCandidates') || '[]');
+    const updatedCandidates = [...savedCandidates, candidate];
+    localStorage.setItem('saveCandidates', JSON.stringify(updatedCandidates));
+    alert(`${candidate.name} has been saved!`);
+  } catch (error) {
+    console.error('Error saving candidate', error);
+    alert('Error saving candidate');
+  }
+};
+
 return (
   <div>
     <h1>Search Candidates</h1>
@@ -65,6 +77,7 @@ return (
               </a>
             </p>
             <p>Company: {candidate.company}</p>
+            <button onClick={() => saveCandidate(candidate)}>Save Candidate</button>
           </li>
         ))}
       </ul>
