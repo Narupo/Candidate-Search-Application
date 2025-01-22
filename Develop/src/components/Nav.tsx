@@ -10,7 +10,7 @@ const Nav = () => {
             to="/"
             className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
           >
-            Search Candidates
+            Potential Candidates
           </NavLink>
         </li>
         <li className="nav-item">
