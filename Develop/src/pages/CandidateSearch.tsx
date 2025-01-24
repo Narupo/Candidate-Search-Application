@@ -17,6 +17,8 @@ const CandidateSearch = () => {
     setError(null);
     try {
       const data = await searchGithub(); 
+      console.log("Data:", data);
+      console.log("Number of Candidates:", data.length);
       const randomUser = data[0].login; 
       const userDetails = await searchGithubUser(randomUser); 
       setCurrentCandidate(userDetails);

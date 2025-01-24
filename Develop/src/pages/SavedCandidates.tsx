@@ -5,14 +5,17 @@ const SavedCandidates = () => {
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
   useEffect(() => {
-    const storedCandidates = localStorage.getItem('savedCandidates');
-    if (storedCandidates) {
+    const storedCandidates = localStorage.getItem('saveCandidates')
+   // console.log("Stored Candidates:", storedCandidates);
+    if (storedCandidates == undefined) {
+      setSavedCandidates([]);
+    } else {
       setSavedCandidates(JSON.parse(storedCandidates));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('savedCandidates', JSON.stringify(SavedCandidates));
+    localStorage.setItem('saveCandidates', JSON.stringify(savedCandidates));
   } , [savedCandidates]);
 
   const removeSavedCandidate = (username: string) => {
